@@ -1,6 +1,6 @@
-# 🗓️ Agendal – Sistema de Agenda Pessoal (Spring MVC + MySQL)
+# 🗓️ Agenda – Sistema de Agenda Pessoal (Spring MVC + MySQL)
 
-**Agendal** é um projeto web desenvolvido com **Spring Boot**, que simula um sistema de agendamento de compromissos com interface HTML utilizando **Thymeleaf**. A aplicação segue o padrão **MVC (Model-View-Controller)** e integra com um banco de dados **MySQL** relacional, com criação automática de tabelas via JPA.
+**Agenda** é um projeto web desenvolvido com **Spring Boot**, que simula um sistema de agendamento de compromissos com interface HTML utilizando **Thymeleaf**. A aplicação segue o padrão **MVC (Model-View-Controller)** e integra com um banco de dados **MySQL** relacional, com criação automática de tabelas via JPA.
 
 ---
 
@@ -31,7 +31,7 @@
 O banco de dados é configurado via arquivo `application.properties`. Basta modificar os dados de acesso conforme sua máquina ou ambiente:
 
 ```properties
-spring.datasource.url=jdbc:mysql://localhost:3306/agendal_db
+spring.datasource.url=jdbc:mysql://localhost:3306/agenda_db
 spring.datasource.username=seu_usuario
 spring.datasource.password=sua_senha
 spring.jpa.hibernate.ddl-auto=update
