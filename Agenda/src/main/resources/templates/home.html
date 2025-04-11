@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agenda</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+</head>
+<script type="text/tmpl" id="tmpl">
+  {{
+  var date = date || new Date(),
+      month = date.getMonth(), 
+      year = date.getFullYear(), 
+      first = new Date(year, month, 1), 
+      last = new Date(year, month + 1, 0),
+      startingDay = first.getDay(), 
+      thedate = new Date(year, month, 1 - startingDay),
+      dayclass = lastmonthcss,
+      today = new Date(),
+      i, j; 
+  if (mode === 'week') {
+    thedate = new Date(date);
+    thedate.setDate(date.getDate() - date.getDay());
+    first = new Date(thedate);
+    last = new Date(thedate);
+    last.setDate(last.getDate()+6);
+  } else if (mode === 'day') {
+    thedate = new Date(date);
+    first = new Date(thedate);
+    last = new Date(thedate);
+    last.setDate(thedate.getDate() + 1);
+  }
+  
+  }}
+  <!-- Button trigger modal -->
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">calendario</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <p>Data</p>
+          <input name="data" id="mytext"></br>
+
+          <p>Hora</p>
+          <input name="hora" id="mytext" placeholder="exemplo: 16h30"></br>
+
+          <p>Descrição</p>
+          <input name="descricao" id="mytext"></br>
+
+          <p>E-mail</p>
+          <input name="E-mail" id="mytext" ></br>
+          
+
+
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <table class="calendar-table table table-condensed table-tight">
+  
+    <thead>
+      <tr>
+        <td colspan="7" style="text-align: center">
+          <table style="white-space: nowrap; width: 100%">
+            <tr>
+              <td style="text-align: left;">
+                <span class="btn-group">
+                  <button class="js-cal-prev btn btn-default">&lt;</button>
+                  <button class="js-cal-next btn btn-default">&gt;</button>
+                </span>
+                <button class="js-cal-option btn btn-default {{: first.toDateInt() <= today.toDateInt() && today.toDateInt() <= last.toDateInt() ? 'active':'' }}" data-date="{{: today.toISOString()}}" data-mode="month">{{: todayname }}</button>
+              </td>
+              <td>
+                <span class="btn-group btn-group-lg">
+                  {{ if (mode !== 'day') { }}
+                  {{ if (mode === 'month') { }}<button class="js-cal-option btn btn-link" data-mode="year">{{: months[month] }}</button>{{ } }}
+                  {{ if (mode ==='week') { }}
+                  <button class="btn btn-link disabled">{{: shortMonths[first.getMonth()] }} {{: first.getDate() }} - {{: shortMonths[last.getMonth()] }} {{: last.getDate() }}</button>
+                  {{ } }}
+                  <button class="js-cal-years btn btn-link">{{: year}}</button>
+                  {{ } else { }}
+                  <button class="btn btn-link disabled"> {{: today.getDate()}} {{: shortMonths[first.getMonth()] }} {{: year}}</button>
+                  <!-- date.toDateString() shortMonths[first.getMonth()] {{: shortMonths[first.getMonth()] }} {{: days[date.getDay()] }} {{: today}} {{: year}}-->
+                  {{ } }}
+                </span>
+              </td>
+              <td style="text-align: right">
+                <span class="btn-group">
+                  <button class="js-cal-option btn btn-default {{: mode==='year'? 'active':'' }}" data-mode="year">Ano</button>
+                  <button class="js-cal-option btn btn-default {{: mode==='month'? 'active':'' }}" data-mode="month">Mês</button>
+                  <button class="js-cal-option btn btn-default {{: mode==='week'? 'active':'' }}" data-mode="week">Semana</button>
+                  <button class="js-cal-option btn btn-default {{: mode==='day'? 'active':'' }}" data-mode="day">Dia</button>
+                </span>
+              </td>
+            </tr>
+          </table>
+
+        </td>
+      </tr>
+    </thead>
+    {{ if (mode ==='year') {
+      month = 0;
+    }}
+    <tbody>
+      {{ for (j = 0; j < 3; j++) { }}
+      <tr>
+        {{ for (i = 0; i < 4; i++) { }}<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+      
+    </style>
+</head>
+<body>
+    <div class="container theme-showcase">
+        <h1>Agenda de Horários</h1>
+        <div id="holder" class="row"></div>
+      </div>
+
+<script type="text/tmpl" id="tmpl">
+  {{
+  var date = date || new Date(),
+      month = date.getMonth(), 
+      year = date.getFullYear(), 
+      first = new Date(year, month, 1), 
+      last = new Date(year, month + 1, 0),
+      startingDay = first.getDay(), 
+      thedate = new Date(year, month, 1 - startingDay),
+      dayclass = lastmonthcss,
+      today = new Date(),
+      i, j; 
+  if (mode === 'week') {
+    thedate = new Date(date);
+    thedate.setDate(date.getDate() - date.getDay());
+    first = new Date(thedate);
+    last = new Date(thedate);
+    last.setDate(last.getDate()+6);
+  } else if (mode === 'day') {
+    thedate = new Date(date);
+    first = new Date(thedate);
+    last = new Date(thedate);
+    last.setDate(thedate.getDate() + 1);
+  }
+  
+  }}
+  <!-- Button trigger modal -->
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">calendario</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <p>Data</p>
+          <input name="data" id="mytext"></br>
+
+          <p>Hora</p>
+          <input name="hora" id="mytext" placeholder="exemplo: 16h30"></br>
+
+          <p>Descrição</p>
+          <input name="descricao" id="mytext"></br>
+
+          <p>E-mail</p>
+          <input name="E-mail" id="mytext" ></br>
+          
+
+
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <table class="calendar-table table table-condensed table-tight">
+  
+    <thead>
+      <tr>
+        <td colspan="7" style="text-align: center">
+          <table style="white-space: nowrap; width: 100%">
+            <tr>
+              <td style="text-align: left;">
+                <span class="btn-group">
+                  <button class="js-cal-prev btn btn-default">&lt;</button>
+                  <button class="js-cal-next btn btn-default">&gt;</button>
+                </span>
+                <button class="js-cal-option btn btn-default {{: first.toDateInt() <= today.toDateInt() && today.toDateInt() <= last.toDateInt() ? 'active':'' }}" data-date="{{: today.toISOString()}}" data-mode="month">{{: todayname }}</button>
+              </td>
+              <td>
+                <span class="btn-group btn-group-lg">
+                  {{ if (mode !== 'day') { }}
+                  {{ if (mode === 'month') { }}<button class="js-cal-option btn btn-link" data-mode="year">{{: months[month] }}</button>{{ } }}
+                  {{ if (mode ==='week') { }}
+                  <button class="btn btn-link disabled">{{: shortMonths[first.getMonth()] }} {{: first.getDate() }} - {{: shortMonths[last.getMonth()] }} {{: last.getDate() }}</button>
+                  {{ } }}
+                  <button class="js-cal-years btn btn-link">{{: year}}</button>
+                  {{ } else { }}
+                  <button class="btn btn-link disabled"> {{: today.getDate()}} {{: shortMonths[first.getMonth()] }} {{: year}}</button>
+                  <!-- date.toDateString() shortMonths[first.getMonth()] {{: shortMonths[first.getMonth()] }} {{: days[date.getDay()] }} {{: today}} {{: year}}-->
+                  {{ } }}
+                </span>
+              </td>
+              <td style="text-align: right">
+                <span class="btn-group">
+                  <button class="js-cal-option btn btn-default {{: mode==='year'? 'active':'' }}" data-mode="year">Ano</button>
+                  <button class="js-cal-option btn btn-default {{: mode==='month'? 'active':'' }}" data-mode="month">Mês</button>
+                  <button class="js-cal-option btn btn-default {{: mode==='week'? 'active':'' }}" data-mode="week">Semana</button>
+                  <button class="js-cal-option btn btn-default {{: mode==='day'? 'active':'' }}" data-mode="day">Dia</button>
+                </span>
+              </td>
+            </tr>
+          </table>
+
+        </td>
+      </tr>
+    </thead>
+    {{ if (mode ==='year') {
+      month = 0;
+    }}
+    <tbody>
+      {{ for (j = 0; j < 3; j++) { }}
+      <tr>
+        {{ for (i = 0; i < 4; i++) { }}
+        <td class="calendar-month month-{{:month}} js-cal-option" data-date="{{: new Date(year, month, 1).toISOString() }}" data-mode="month">
+          {{: months[month] }}
+          {{ month++;}}
+        </td>
+        {{ } }}
+      </tr>
+      {{ } }}
+    </tbody>
+    {{ } }}
+    {{ if (mode ==='month' || mode ==='week') { }}
+    <thead>
+      <tr class="c-weeks">
+        {{ for (i = 0; i < 7; i++) { }}
+        <th class="c-name">
+          {{: days[i] }}
+        </th>
+        {{ } }}
+      </tr>
+    </thead>
+    <tbody>
+      {{ for (j = 0; j < 6 && (j < 1 || mode === 'month'); j++) { }}
+      <tr>
+        {{ for (i = 0; i < 7; i++) { }}
+        {{ if (thedate > last) { dayclass = nextmonthcss; } else if (thedate >= first) { dayclass = thismonthcss; } }}
+        <div type="button" >
+
+        <td class="calendar-day {{: dayclass }} {{: thedate.toDateCssClass() }} {{: date.toDateCssClass() === thedate.toDateCssClass() ? 'selected':'' }} {{: daycss[i] }} js-cal-option" data-date="{{: thedate.toISOString() }}" onClick=(chamaModal("{{: thedate.getDate() }}/{{: thedate.getMonth() }}/{{: year}}"))>
+          <div class="date" >{{: thedate.getDate() }}
+
+            <!--  id="{{: thedate.getDate() }}/{{: thedate.getMonth() }}/{{: year}}"    -->
+            <button style="display: none"id="modal{{: thedate.getDate() }}/{{: thedate.getMonth() }}/{{: year}}"class="btn btn-" data-toggle="modal" data-target="#exampleModal">
+            </button>
+          </div>
+          {{ thedate.setDate(thedate.getDate() + 1);}}
+        </td>
+      </div>
+        {{ } }}
+      </tr>
+      {{ } }}
+    </tbody>
+    {{ } }}
+    {{ if (mode ==='day') { }}
+    <tbody>
+      <tr>
+        <td colspan="7">
+          <table class="table table-striped table-condensed table-tight-vert">
+            <thead>
+              <tr>
+                <th>&nbsp;</th>
+                <th style="text-align: center; width: 100%">{{: days[date.getDay()] }}</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th class="timetitle">All Day</th>
+                <td class="{{: date.toDateCssClass() }}"> </td>
+              </tr>
+              <tr>
+                <th class="timetitle">Before 6 AM</th>
+                <td class="time-0-0"> </td>
+              </tr>
+              {{for (i = 6; i < 22; i++) { }}
+              <tr>
+                <th class="timetitle">{{: i <= 12 ? i : i - 12 }} {{: i < 12 ? "AM" : "PM"}}</th>
+                <td class="time-{{: i}}-0"> </td>
+              </tr>
+              <tr>
+                <th class="timetitle">{{: i <= 12 ? i : i - 12 }}:30 {{: i < 12 ? "AM" : "PM"}}</th>
+                <td class="time-{{: i}}-30"> </td>
+              </tr>
+              {{ } }}
+              <tr>
+                <th class="timetitle">After 10 PM</th>
+                <td class="time-22-0"> </td>
+              </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+    </tbody>
+    {{ } }}
+  </table>
+</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script src="script.js"></script>
+<script>
+  function chamaModal(id) {
+    console.log(id);
+    var id1 = "modal"+ id;
+    console.log(id1);
+    document.getElementById(id1).click();
+    var test = "Hello";
+  document.getElementById("mytext").value = id;
+  }
+</script>
+</html>
+        <td class="calendar-month month-{{:month}} js-cal-option" data-date="{{: new Date(year, month, 1).toISOString() }}" data-mode="month">
+          {{: months[month] }}
+          {{ month++;}}
+        </td>
+        {{ } }}
+      </tr>
+      {{ } }}
+    </tbody>
+    {{ } }}
+    {{ if (mode ==='month' || mode ==='week') { }}
+    <thead>
+      <tr class="c-weeks">
+        {{ for (i = 0; i < 7; i++) { }}
+        <th class="c-name">
+          {{: days[i] }}
+        </th>
+        {{ } }}
+      </tr>
+    </thead>
+    <tbody>
+      {{ for (j = 0; j < 6 && (j < 1 || mode === 'month'); j++) { }}
+      <tr>
+        {{ for (i = 0; i < 7; i++) { }}
+        {{ if (thedate > last) { dayclass = nextmonthcss; } else if (thedate >= first) { dayclass = thismonthcss; } }}
+        <div type="button" >
+
+        <td class="calendar-day {{: dayclass }} {{: thedate.toDateCssClass() }} {{: date.toDateCssClass() === thedate.toDateCssClass() ? 'selected':'' }} {{: daycss[i] }} js-cal-option" data-date="{{: thedate.toISOString() }}" onClick=(chamaModal("{{: thedate.getDate() }}/{{: thedate.getMonth() }}/{{: year}}"))>
+          <div class="date" >{{: thedate.getDate() }}
+
+            <!--  id="{{: thedate.getDate() }}/{{: thedate.getMonth() }}/{{: year}}"    -->
+            <button style="display: none"id="modal{{: thedate.getDate() }}/{{: thedate.getMonth() }}/{{: year}}"class="btn btn-" data-toggle="modal" data-target="#exampleModal">
+            </button>
+          </div>
+          {{ thedate.setDate(thedate.getDate() + 1);}}
+        </td>
+      </div>
+        {{ } }}
+      </tr>
+      {{ } }}
+    </tbody>
+    {{ } }}
+    {{ if (mode ==='day') { }}
+    <tbody>
+      <tr>
+        <td colspan="7">
+          <table class="table table-striped table-condensed table-tight-vert">
+            <thead>
+              <tr>
+                <th>&nbsp;</th>
+                <th style="text-align: center; width: 100%">{{: days[date.getDay()] }}</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th class="timetitle">All Day</th>
+                <td class="{{: date.toDateCssClass() }}"> </td>
+              </tr>
+              <tr>
+                <th class="timetitle">Before 6 AM</th>
+                <td class="time-0-0"> </td>
+              </tr>
+              {{for (i = 6; i < 22; i++) { }}
+              <tr>
+                <th class="timetitle">{{: i <= 12 ? i : i - 12 }} {{: i < 12 ? "AM" : "PM"}}</th>
+                <td class="time-{{: i}}-0"> </td>
+              </tr>
+              <tr>
+                <th class="timetitle">{{: i <= 12 ? i : i - 12 }}:30 {{: i < 12 ? "AM" : "PM"}}</th>
+                <td class="time-{{: i}}-30"> </td>
+              </tr>
+              {{ } }}
+              <tr>
+                <th class="timetitle">After 10 PM</th>
+                <td class="time-22-0"> </td>
+              </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+    </tbody>
+    {{ } }}
+  </table>
+</script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script th:src="@{../static/script.js}"></script>
+<script type="text/tmpl">
+  function chamaModal(id) {
+    console.log(id);
+    var id1 = "modal"+ id;
+    console.log(id1);
+    document.getElementById(id1).click();
+    var test = "Hello";
+  document.getElementById("mytext").value = id;
+  }
+</script>
+</html>
